@@ -3,6 +3,7 @@ import SwiftUI
 struct SportNewDetailView: View {
     @StateObject var sportNewDetailModel =  SportNewDetailViewModel()
     @Environment(\.presentationMode) var presentationMode
+    @State private var showActivity = false
     let model: NewsModel
     var body: some View {
         GeometryReader { geometry in
@@ -94,7 +95,7 @@ struct SportNewDetailView: View {
                         }
                         
                         Button(action: {
-                            
+                            showActivity = true
                         }) {
                             ZStack {
                                 Color(red: 245/255, green: 199/255, blue: 85/255)
@@ -113,6 +114,10 @@ struct SportNewDetailView: View {
                                 }
                             }
                         }
+                        //MARK: - ссылку на аппку для шейринга сюда
+                        .sheet(isPresented: $showActivity) {
+                                  ActivityViewController(activityItems: [""], applicationActivities: nil)
+                              }
                         .padding(.top, 5)
                     }
                 }
@@ -123,7 +128,17 @@ struct SportNewDetailView: View {
 }
 
 #Preview {
-    let model = NewsModel(name: "",desc: "", fullDesc: "", image: "")
+    let model = NewsModel(name: "",desc: "", fullDesc: "", image: SportImageName.newsImage2.rawValue)
     SportNewDetailView(model: model)
 }
 
+struct ActivityViewController: UIViewControllerRepresentable {
+    var activityItems: [Any]
+    var applicationActivities: [UIActivity]? = nil
+
+    func makeUIViewController(context: Context) -> UIActivityViewController {
+        return UIActivityViewController(activityItems: activityItems, applicationActivities: applicationActivities)
+    }
+
+    func updateUIViewController(_ uiViewController: UIActivityViewController, context: Context) {}
+}
