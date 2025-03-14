@@ -52,6 +52,9 @@ struct SportOnboardingView: View {
                                 sportOnboardingModel.isTabBar = true
                             }
                         }
+                                          .fullScreenCover(isPresented: $sportOnboardingModel.isTabBar) {
+                                              SportTabBarView()
+                                            }
                         
                         CustomColorButton(geometry: geometry,
                                           color: Color(red: 41/255, green: 56/255, blue: 77/255),
@@ -59,13 +62,13 @@ struct SportOnboardingView: View {
                                           textColor: .white) {
                             sportOnboardingModel.isTabBar = true
                         }
+                                          .fullScreenCover(isPresented: $sportOnboardingModel.isTabBar) {
+                                              SportTabBarView()
+                                            }
                     }
                     .padding(.bottom)
                 }
             }
-            NavigationLink(destination: SportTabBarView(),
-                           isActive: $sportOnboardingModel.isTabBar) {}
-                .hidden()
         }
         .navigationBarBackButtonHidden(true)
     }

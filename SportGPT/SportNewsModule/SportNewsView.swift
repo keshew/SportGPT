@@ -28,7 +28,11 @@ struct SportNewsView: View {
                                     selectedNews = news
                                     sportNewsModel.isDetail = true
                                 }
+                                           .fullScreenCover(isPresented: $sportNewsModel.isDetail) {
+                                               SportNewDetailView(model: selectedNews ?? NewsModel(name: "", desc: "", fullDesc: "", image: ""))
+                                             }
                                 .padding(.top)
+                                
                             }
                         }
                     }
@@ -41,10 +45,6 @@ struct SportNewsView: View {
             .onAppear {
                 sportNewsModel.loadNews()
             }
-
-            NavigationLink(destination: SportNewDetailView(model: selectedNews ?? NewsModel(name: "", desc: "", fullDesc: "", image: "")),
-                           isActive: $sportNewsModel.isDetail) {}
-                .hidden()
         }
         .navigationBarBackButtonHidden(true)
     }

@@ -99,7 +99,7 @@ struct SportNewDetailView: View {
                         }) {
                             ZStack {
                                 Color(red: 245/255, green: 199/255, blue: 85/255)
-                                    .frame(width: geometry.size.width - 30,
+                                    .frame(width: geometry.size.width,
                                            height: geometry.size.height * 0.062)
                                     .cornerRadius(8)
                                 

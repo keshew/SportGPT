@@ -4,7 +4,7 @@ struct SportTabBarView: View {
     @StateObject var SportTabBarModel =  SportTabBarViewModel()
     @State private var selectedTab: CustomTabBar.TabType = .News
     var body: some View {
-        NavigationView {
+//        NavigationView {
             ZStack(alignment: .bottom) {
                 VStack {
                     if selectedTab == .News {
@@ -24,8 +24,7 @@ struct SportTabBarView: View {
                 CustomTabBar(selectedTab: $selectedTab)
             }
             .ignoresSafeArea(.keyboard)
-        }
-        .navigationBarBackButtonHidden(true)
+            .navigationBarBackButtonHidden(true)
     }
 }
 

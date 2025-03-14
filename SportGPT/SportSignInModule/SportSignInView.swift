@@ -7,7 +7,7 @@ struct SportSignInView: View {
     let apiManager = APIManager()
 
     var body: some View {
-        NavigationView {
+//        NavigationView {
             GeometryReader { geometry in
                 ZStack {
                     Color(red: 18/255, green: 28/255, blue: 36/225)
@@ -50,6 +50,9 @@ struct SportSignInView: View {
                                     }
                                 }
                             }
+                                              .fullScreenCover(isPresented: $sportSignInModel.isLogIn) {
+                                                  SportLogInView()
+                                                }
 
                             CustomColorButton(geometry: geometry,
                                               color: Color(red: 41/255, green: 56/255, blue: 77/255),
@@ -57,11 +60,14 @@ struct SportSignInView: View {
                                               textColor: .white) {
                                 sportSignInModel.isLogIn = true
                             }
+                                              .fullScreenCover(isPresented: $sportSignInModel.isLogIn) {
+                                                  SportLogInView()
+                                                }
                         }
                         .padding(.bottom)
                     }
                     .padding(.top)
-                }
+//                }
                 .alert(isPresented: $showAlert) {
                     Alert(
                         title: Text("Error"),

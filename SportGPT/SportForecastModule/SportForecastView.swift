@@ -44,6 +44,12 @@ struct SportForecastView: View {
                                         selectedForecast = forecast
                                         sportForecastModel.isDetail = true
                                 }
+                                    .fullScreenCover(isPresented: $sportForecastModel.isDetail) {
+                                        SportMatchForecastView(model: selectedForecast ?? ForecastModel(name: "",
+                                                                                                                                    desc: "",
+                                                                                                                                    probability: 0.3,image: "",
+                                                                                                                                    timeLeft: ""))
+                                      }
                                 .padding(.top, 20)
                             }
                         }
@@ -56,14 +62,7 @@ struct SportForecastView: View {
             .onAppear {
                 sportForecastModel.loadForecasts()
             }
-            
-            NavigationLink(destination: SportMatchForecastView(model: selectedForecast ?? ForecastModel(name: "",
-                                                                                                        desc: "",
-                                                                                                        probability: 0.3,
-                                                                                                        image: "",
-                                                                                                        timeLeft: "")),
-                           isActive: $sportForecastModel.isDetail) {}
-                .hidden()
+      
         }
         .navigationBarBackButtonHidden(true)
     }

@@ -58,6 +58,13 @@ struct SportLogInView: View {
                                 }
                             }
                         }
+                                          .fullScreenCover(isPresented: $sportLogInModel.isLogIn) {
+                                              SportTabBarView()
+                                            }
+                        
+                                          .fullScreenCover(isPresented: $sportLogInModel.isOnb) {
+                                              SportOnboardingView()
+                                            }
 
 
                         CustomColorButton(geometry: geometry,
@@ -66,6 +73,7 @@ struct SportLogInView: View {
                                           textColor: .white) {
                             presentationMode.wrappedValue.dismiss()
                         }
+                        
                     }
                     .padding(.bottom)
                 }
@@ -79,13 +87,13 @@ struct SportLogInView: View {
                 )
             }
             
-            NavigationLink(destination: SportTabBarView(),
-                           isActive: $sportLogInModel.isLogIn) {}
-                .hidden()
-            
-            NavigationLink(destination: SportOnboardingView(),
-                           isActive: $sportLogInModel.isOnb) {}
-                .hidden()
+//            NavigationLink(destination: SportTabBarView(),
+//                           isActive: $sportLogInModel.isLogIn) {}
+//                .hidden()
+//            
+//            NavigationLink(destination: SportOnboardingView(),
+//                           isActive: $sportLogInModel.isOnb) {}
+//                .hidden()
         }
         .navigationBarBackButtonHidden(true)
     }
