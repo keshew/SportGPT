@@ -28,14 +28,10 @@ class UserDefaultsManager: ObservableObject {
             return (nil, nil)
         }
     }
-
-    func checkLogin() -> Bool {
+    
+    func checkLoginIn() -> Bool {
         let userDefaults = UserDefaults.standard
-        if let _ = userDefaults.dictionary(forKey: "user") {
-            return true
-        } else {
-            return false
-        }
+        return userDefaults.bool(forKey: "isLoggedIn")
     }
 
     func saveLoginStatus(_ isLoggedIn: Bool) {

@@ -38,6 +38,7 @@ struct SportLogInView: View {
                                     switch result {
                                     case .success(let response):
                                         if response.status == "success" {
+                                            UserDefaultsManager().saveLoginStatus(true)
                                             DispatchQueue.main.async {
                                               if UserDefaultsManager().isFirstLaunch() {
                                                     sportLogInModel.isOnb = true

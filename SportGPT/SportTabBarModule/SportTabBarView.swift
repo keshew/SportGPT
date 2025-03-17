@@ -4,7 +4,6 @@ struct SportTabBarView: View {
     @StateObject var SportTabBarModel =  SportTabBarViewModel()
     @State private var selectedTab: CustomTabBar.TabType = .News
     var body: some View {
-//        NavigationView {
             ZStack(alignment: .bottom) {
                 VStack {
                     if selectedTab == .News {
