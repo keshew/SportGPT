@@ -3,18 +3,18 @@ import SwiftUI
 struct SportNewsView: View {
     @StateObject var sportNewsModel =  SportNewsViewModel()
     @State private var selectedNews: NewsModel?
-
+    
     var body: some View {
         GeometryReader { geometry in
             ZStack {
                 Color(red: 18/255, green: 28/255, blue: 36/225)
                     .ignoresSafeArea()
-
+                
                 ScrollView(showsIndicators: false) {
                     VStack {
                         Text("News")
                             .EpilogueBold(size: 18)
-
+                        
                         if sportNewsModel.arrayOfNewsModel.isEmpty {
                             Text("Loading...")
                                 .foregroundColor(.white)
@@ -30,14 +30,14 @@ struct SportNewsView: View {
                                 }
                                            .fullScreenCover(isPresented: $sportNewsModel.isDetail) {
                                                SportNewDetailView(model: selectedNews ?? NewsModel(name: "", desc: "", fullDesc: "", image: ""))
-                                             }
-                                .padding(.top)
+                                           }
+                                           .padding(.top)
                                 
                             }
                         }
                     }
                     .padding(.top)
-
+                    
                     Color(.clear)
                         .frame(height: 65)
                 }

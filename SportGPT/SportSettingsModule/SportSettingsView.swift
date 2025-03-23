@@ -99,7 +99,7 @@ struct SportSettingsView: View {
                             sportSettingsModel.isLogOut = true
                             DispatchQueue.main.async {
                                 UserDefaultsManager().saveLoginStatus(false)
-                                UserDefaultsManager().checkLoginIn()
+//                                UserDefaultsManager().checkLoginIn()
                             }
                         }) {
                             HStack {

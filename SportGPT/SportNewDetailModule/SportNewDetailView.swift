@@ -99,8 +99,7 @@ struct SportNewDetailView: View {
                         }) {
                             ZStack {
                                 Color(red: 245/255, green: 199/255, blue: 85/255)
-                                    .frame(width: geometry.size.width,
-                                           height: geometry.size.height * 0.062)
+                                    .frame(height: geometry.size.height * 0.062)
                                     .cornerRadius(8)
                                 
                                 HStack {
@@ -114,6 +113,8 @@ struct SportNewDetailView: View {
                                 }
                             }
                         }
+                        .padding(.horizontal)
+                        
                         //MARK: - ссылку на аппку для шейринга сюда
                         .sheet(isPresented: $showActivity) {
                                   ActivityViewController(activityItems: [""], applicationActivities: nil)

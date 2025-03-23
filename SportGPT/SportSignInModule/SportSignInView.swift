@@ -65,6 +65,18 @@ struct SportSignInView: View {
                                           .fullScreenCover(isPresented: $sportSignInModel.isLogIn) {
                                               SportLogInView()
                                           }
+                        
+                        CustomColorButton(geometry: geometry,
+                                          color: Color(red: 41/255, green: 56/255, blue: 77/255),
+                                          text: "Enter as Guest",
+                                          textColor: .white) {
+                            sportSignInModel.isGuest = true
+                            UserDefaultsManager().saveUser(email: "guest",
+                                                           pass: "guest")
+                        }
+                                          .fullScreenCover(isPresented: $sportSignInModel.isGuest) {
+                                              SportNewsView()
+                                          }
                     }
                     .padding(.bottom)
                 }
