@@ -1,6 +1,6 @@
 import SwiftUI
 
-struct ForecastModel: Identifiable {
+struct ForecastModel: Identifiable, Equatable {
     let id = UUID()
     var name: String
     var desc: String
@@ -12,8 +12,8 @@ struct ForecastModel: Identifiable {
 struct ForecastItem: Codable {
     let match: String
     let prediction: String
-    let prediction_confidence: Int // Изменили название и тип
-    let stadium_image: String      // Изменили название
+    let prediction_confidence: Int
+    let stadium_image: String
 }
 
 struct SportForecastModel {
