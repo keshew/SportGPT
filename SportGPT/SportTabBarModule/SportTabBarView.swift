@@ -2,18 +2,18 @@ import SwiftUI
 
 struct SportTabBarView: View {
     @StateObject var SportTabBarModel =  SportTabBarViewModel()
-    @EnvironmentObject var sportNewsModel: SportNewsViewModel
-    @EnvironmentObject var sportForecastModel: SportForecastViewModel
+//    @EnvironmentObject var sportNewsModel: SportNewsViewModel
+//    @EnvironmentObject var sportForecastModel: SportForecastViewModel
     @State private var selectedTab: CustomTabBar.TabType = .News
     var body: some View {
             ZStack(alignment: .bottom) {
                 VStack {
                     if selectedTab == .News {
                         SportNewsView()
-                            .environmentObject(sportNewsModel)
+//                            .environmentObject(sportNewsModel)
                     } else if selectedTab == .AIForecasts {
                         SportForecastView()
-                            .environmentObject(sportForecastModel)
+//                            .environmentObject(sportForecastModel)
                     } else if selectedTab == .Chat {
                         SportChatView()
                     } else if selectedTab == .Settings {
@@ -28,17 +28,17 @@ struct SportTabBarView: View {
             }
             .ignoresSafeArea(.keyboard)
             .navigationBarBackButtonHidden(true)
-            .onAppear {
-                sportNewsModel.loadNews()
-                sportForecastModel.loadForecasts()
-            }
-        
-            .onChange(of: sportNewsModel.arrayOfNewsModel) { _ in
-//                      print("Новости", sportNewsModel.arrayOfNewsModel)
-                  }
-                  .onChange(of: sportForecastModel.arrayOfForecast) { _ in
-//                      print("Прогнозы", sportForecastModel.arrayOfForecast)
-                  }
+//            .onAppear {
+//                sportNewsModel.loadNews()
+//                sportForecastModel.loadForecasts()
+//            }
+//        
+//            .onChange(of: sportNewsModel.arrayOfNewsModel) { _ in
+////                      print("Новости", sportNewsModel.arrayOfNewsModel)
+//                  }
+//                  .onChange(of: sportForecastModel.arrayOfForecast) { _ in
+////                      print("Прогнозы", sportForecastModel.arrayOfForecast)
+//                  }
     }
 }
 

@@ -1,7 +1,7 @@
 import SwiftUI
 
-struct ForecastModel: Identifiable, Equatable {
-    let id = UUID()
+struct ForecastModel: Identifiable, Codable, Equatable {
+    var id = UUID().uuidString
     var name: String
     var desc: String
     let probability: Double?

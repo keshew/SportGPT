@@ -61,11 +61,11 @@ struct SportLogInView: View {
                         }
                                           .fullScreenCover(isPresented: $sportLogInModel.isLogIn) {
                                               SportTabBarView()
-                                            }
+                                          }
                         
                                           .fullScreenCover(isPresented: $sportLogInModel.isOnb) {
                                               SportOnboardingView()
-                                            }
+                                          }
 
 
                         CustomColorButton(geometry: geometry,
@@ -87,14 +87,6 @@ struct SportLogInView: View {
                     dismissButton: .default(Text("OK"))
                 )
             }
-            
-//            NavigationLink(destination: SportTabBarView(),
-//                           isActive: $sportLogInModel.isLogIn) {}
-//                .hidden()
-//            
-//            NavigationLink(destination: SportOnboardingView(),
-//                           isActive: $sportLogInModel.isOnb) {}
-//                .hidden()
         }
         .navigationBarBackButtonHidden(true)
     }

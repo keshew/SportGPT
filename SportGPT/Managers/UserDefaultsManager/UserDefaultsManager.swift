@@ -1,6 +1,9 @@
 import Foundation
 
 class UserDefaultsManager: ObservableObject {
+    static let shared = UserDefaultsManager()
+       
+       private let defaults = UserDefaults.standard
     
     func isFirstLaunch() -> Bool {
           let defaults = UserDefaults.standard
@@ -38,4 +41,44 @@ class UserDefaultsManager: ObservableObject {
         let defaults = UserDefaults.standard
         defaults.set(isLoggedIn, forKey: "isLoggedIn")
     }
+    
+    func saveNews(_ news: [NewsModel]) {
+         do {
+             let data = try JSONEncoder().encode(news)
+             defaults.set(data, forKey: "news")
+         } catch {
+             print("Ошибка сохранения новостей: \(error)")
+         }
+     }
+     
+     func loadNews() -> [NewsModel] {
+         guard let data = defaults.data(forKey: "news") else { return [] }
+         
+         do {
+             return try JSONDecoder().decode([NewsModel].self, from: data)
+         } catch {
+             print("Ошибка загрузки новостей: \(error)")
+             return []
+         }
+     }
+     
+     func saveForecasts(_ forecasts: [ForecastModel]) {
+         do {
+             let data = try JSONEncoder().encode(forecasts)
+             defaults.set(data, forKey: "forecasts")
+         } catch {
+             print("Ошибка сохранения прогнозов: \(error)")
+         }
+     }
+     
+     func loadForecasts() -> [ForecastModel] {
+         guard let data = defaults.data(forKey: "forecasts") else { return [] }
+         
+         do {
+             return try JSONDecoder().decode([ForecastModel].self, from: data)
+         } catch {
+             print("Ошибка загрузки прогнозов: \(error)")
+             return []
+         }
+     }
 }

@@ -43,14 +43,14 @@ struct SportForecastView: View {
                                     chanches: forecast.desc) {
                                         selectedForecast = forecast
                                         sportForecastModel.isDetail = true
-                                }
+                                    }
                                     .fullScreenCover(isPresented: $sportForecastModel.isDetail) {
                                         SportMatchForecastView(model: selectedForecast ?? ForecastModel(name: "",
-                                                                                                                                    desc: "",
-                                                                                                                                    probability: 0.3,image: "",
-                                                                                                                                    timeLeft: ""))
-                                      }
-                                .padding(.top, 20)
+                                                                                                        desc: "",
+                                                                                                        probability: 0.3,image: "",
+                                                                                                        timeLeft: ""))
+                                    }
+                                    .padding(.top, 20)
                             }
                         }
                         
@@ -60,9 +60,8 @@ struct SportForecastView: View {
                 }
             }
             .onAppear {
-                sportForecastModel.loadForecasts()
+                sportForecastModel.loadForecat()
             }
-      
         }
         .navigationBarBackButtonHidden(true)
     }

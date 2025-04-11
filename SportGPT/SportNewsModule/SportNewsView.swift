@@ -32,7 +32,6 @@ struct SportNewsView: View {
                                                SportNewDetailView(model: selectedNews ?? NewsModel(name: "", desc: "", fullDesc: "", image: ""))
                                            }
                                            .padding(.top)
-                                
                             }
                         }
                     }

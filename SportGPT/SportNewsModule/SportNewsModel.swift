@@ -1,7 +1,7 @@
 import SwiftUI
 
-struct NewsModel: Identifiable, Equatable {
-    let id = UUID() 
+struct NewsModel: Identifiable, Equatable, Codable {
+    var id = UUID().uuidString
     var name: String
     var desc: String
     var fullDesc: String
